@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: #1D2C41;
+  color: #fff;
+  font-family: "calibir", sans-serif;
+  text-align: center; }
+
+.cat-list-container {
+  width: 30%;
+  background: #0d141e;
+  height: 100vh;
+  overflow-y: auto; }
+  .cat-list-container .cat-list {
+    margin-top: 30px;
+    list-style: none; }
+    .cat-list-container .cat-list li {
+      margin: 10px 0;
+      padding: 10px; }
+      .cat-list-container .cat-list li:hover, .cat-list-container .cat-list li.selected {
+        background: crimson; }
+        .cat-list-container .cat-list li:hover .click-number .text, .cat-list-container .cat-list li.selected .click-number .text {
+          color: #fff; }
+
+.title {
+  text-align: center;
+  margin: 20px; }
+
+.cat-display {
+  width: 70%; }
+
+.game-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px; }
+
+.click-number {
+  text-align: center;
+  color: white;
+  font-size: 20px; }
+  .click-number span.text {
+    color: crimson;
+    margin-left: 5px;
+    font-weight: bolder; }
+
+.game-container .cats {
+  width: 450px; }
+
+.cats {
+  width: 200px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); }
+  .cats:hover {
+    transform: scale(1.01); }
+
+::-webkit-scrollbar-track {
+  background-color: transparent; }
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent; }
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(238, 238, 238, 0.3);
+  border-radius: 3px; }
+
+/*# sourceMappingURL=main.css.map */

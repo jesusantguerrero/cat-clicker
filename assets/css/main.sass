@@ -1,0 +1,74 @@
+=makeFlex($width,$direction,$justify,$align)
+  width: $width
+  display: flex
+  flex-direction: $direction
+  justify-content: $justify
+  align-items: $align
+$primary-color: #1D2C41
+*
+  box-sizing: border-box
+  margin: 0 
+  padding: 0
+body
+  +makeFlex(100%,row,flex-start,center)
+  background: $primary-color
+  color: #fff
+  font-family: 'calibir', sans-serif
+  text-align: center
+.cat-list-container
+  width: 30%
+  background: darken($primary-color,10%)
+  height: 100vh
+  overflow-y: auto
+  .cat-list
+    margin-top: 30px
+    list-style: none
+    li
+      margin: 10px 0
+      padding: 10px
+      ba
+      &:hover,
+      &.selected
+        background: crimson
+        .click-number .text
+          color: #fff
+.title
+  text-align: center
+  margin: 20px
+.cat-display
+  width: 70%
+.game-container
+  +makeFlex(100%,column, center, center)
+  margin: 0 15px
+  
+.click-number
+  text-align: center
+  color: white
+  font-size: 20px
+  span.text
+    color: crimson
+    margin-left: 5px
+    font-weight: bolder
+.game-container .cats
+  width: 450px
+  
+.cats
+  width: 200px
+  border-radius: 4px
+  cursor: pointer
+  transition: all ease .3s
+  box-shadow: 2px 2px 5px rgba(0,0,0,.4)
+  
+  &:hover
+    transform: scale(1.01)
+  
+::-webkit-scrollbar-track
+  background-color: transparent
+
+::-webkit-scrollbar
+  width: 10px
+  background-color: transparent
+
+::-webkit-scrollbar-thumb
+  background-color: transparentize(#eee,.7)
+  border-radius: 3px 
