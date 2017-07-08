@@ -22,13 +22,13 @@ body {
   .cat-list-container .cat-list {
     margin-top: 30px;
     list-style: none; }
+    .cat-list-container .cat-list .cat-id {
+      display: none; }
     .cat-list-container .cat-list li {
       margin: 10px 0;
       padding: 10px; }
       .cat-list-container .cat-list li:hover, .cat-list-container .cat-list li.selected {
         background: crimson; }
-        .cat-list-container .cat-list li:hover .click-number .text, .cat-list-container .cat-list li.selected .click-number .text {
-          color: #fff; }
 
 .title {
   text-align: center;

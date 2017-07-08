@@ -37,14 +37,9 @@ var model = {
     return this.cats
   },
 
-  getCat: function(name){
-    this.activeCat = ''
-    this.cats.forEach(function(cat){
-      if(cat.name == name){
-        activeCat = cat
-      }
-    })
-    return activeCat
+  getCat: function(id){
+    var index = id - 1
+    return this.cats[index]
   },
 
   updateClickCount: function(id){
@@ -109,6 +104,7 @@ var catListView = {
     octopus.getCats().forEach(function(cat) {
       this.catItems += `<li class="cat-item"><img class="cats" src="${cat.picture}" />
         <p class="name">${cat.name}</p>
+        <p class="cat-id">${cat.id}</p>
       </li>`
     }, this);
     this.$catList.html(this.catItems);
@@ -122,7 +118,7 @@ var catListView = {
       var $this = $(this)
       catItem.removeClass("selected")
       $this.addClass("selected")
-      octopus.updateDisplay($this.find('.name').text())
+      octopus.updateDisplay($this.find('.cat-id').text())
     })
   },
 }
