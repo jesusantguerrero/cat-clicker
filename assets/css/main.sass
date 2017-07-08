@@ -4,7 +4,10 @@
   flex-direction: $direction
   justify-content: $justify
   align-items: $align
+
 $primary-color: #1D2C41
+$contrast-color: crimson
+
 *
   box-sizing: border-box
   margin: 0 
@@ -30,13 +33,13 @@ body
       padding: 10px
       &:hover,
       &.selected
-        background: crimson
+        background: $contrast-color
 .title
   text-align: center
   margin: 20px
-.cat-display
+.main-screen
   width: 70%
-.game-container
+.cat-display
   +makeFlex(100%,column, center, center)
   margin: 0 15px
   
@@ -45,10 +48,10 @@ body
   color: white
   font-size: 20px
   span.text
-    color: crimson
+    color: $contrast-color
     margin-left: 5px
     font-weight: bolder
-.game-container .cats
+.cat-display .cats
   width: 450px
   
 .cats
@@ -71,3 +74,34 @@ body
 ::-webkit-scrollbar-thumb
   background-color: transparentize(#eee,.7)
   border-radius: 3px 
+
+button
+  width: 100px
+  height: 38px
+  background: $contrast-color
+  text-align: center
+  border-radius: 4px
+  border: none
+  color: #fff
+  cursor: pointer
+  margin: 10px 0 5px 0
+
+  &:hover
+    background: lighten($contrast-color,10%)
+
+.admin-box,
+.admin-form
+  +makeFlex(100%,column,center,center)
+  padding: 0 10px
+
+  input
+    width: 50%
+    height: 28px
+    margin: 5px 0
+    padding: 5px
+
+.admin-form
+  visibility: hidden
+
+  &.visible
+    visibility: visible

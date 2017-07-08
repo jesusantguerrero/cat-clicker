@@ -34,10 +34,10 @@ body {
   text-align: center;
   margin: 20px; }
 
-.cat-display {
+.main-screen {
   width: 70%; }
 
-.game-container {
+.cat-display {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@ body {
     margin-left: 5px;
     font-weight: bolder; }
 
-.game-container .cats {
+.cat-display .cats {
   width: 450px; }
 
 .cats {
@@ -76,5 +76,38 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: rgba(238, 238, 238, 0.3);
   border-radius: 3px; }
+
+button {
+  width: 100px;
+  height: 38px;
+  background: crimson;
+  text-align: center;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 0 5px 0; }
+  button:hover {
+    background: #ed365b; }
+
+.admin-box,
+.admin-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px; }
+  .admin-box input,
+  .admin-form input {
+    width: 50%;
+    height: 28px;
+    margin: 5px 0;
+    padding: 5px; }
+
+.admin-form {
+  visibility: hidden; }
+  .admin-form.visible {
+    visibility: visible; }
 
 /*# sourceMappingURL=main.css.map */

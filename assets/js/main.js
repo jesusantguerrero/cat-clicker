@@ -1,5 +1,5 @@
-var model = {
-  init: function () {
+const model = {
+  init() {
     this.cats = [{
         id: 1,
         name: 'Herbie',
@@ -33,58 +33,75 @@ var model = {
     ]
   },
 
-  getAllCats: function(){
+  getAllCats(){
     return this.cats
   },
 
-  getCat: function(id){
+  getCat(id){
     var index = id - 1
     return this.cats[index]
   },
 
-  updateClickCount: function(id){
+  updateClickCount(id){
     var index = id - 1
-    this.cats[index].clickCount++
-    displayView.init(this.cats[index])
+    this.cats[index].clickCount+=1
+    return this.cats[index]
+  },
+
+  updateData(cat){
+    const {id,name,picture,clickCount} = cat
+    var index = id - 1
+    this.cats[index] = cat
+    return this.cats[index]
   }
 }
 
-var octopus = {
-  getCats: function(){
+const octopus = {
+  getCats(){
     return model.getAllCats();
   },
 
-  updateDisplay: function(name){
+  updateDisplay(name){
     var activeCat =  model.getCat(name)
     displayView.init(activeCat)
   },
 
-  updateClick: function(id){
-    model.updateClickCount(id)
+  updateClick(id){
+    var activeCat = model.updateClickCount(id)
+    displayView.init(activeCat)
+
   },
 
-  init: function(){
+  updateData(cat){
+    var activeCat = model.updateData(cat)
+    displayView.init(activeCat)
+  },
+
+  init(){
     model.init()
+    adminView.init()
     catListView.init()
-    octopus.clickItem()
+    
   }
 }
 
-var displayView = {
-  init: function(cat){
-    this.$display = $('.game-container');
+const displayView = {
+  init(cat){
+    this.$display = $('.cat-display');
     displayView.render(cat)
   },
-  render: function(cat){
+
+  render(cat){
     var activeCat = `
       <img class="cats active-cat" src="${cat.picture}"/>
       <p class="cat-name">${cat.name}</p>
       <p class="click-number"> <span class="clicks">${cat.clickCount}</span><span class="text">Clicks</span></p>`
-   this.$display.html(activeCat)
-   displayView.clickHandler(cat.id)
+    
+    adminView.setInformation(cat)
+    this.$display.html(activeCat)
+    displayView.clickHandler(cat.id)
   },
-  clickHandler: function(id){
-  
+  clickHandler(id){
     this.activeCatId = id
     var activeCat = $(".active-cat")
     activeCat.on('click',function(){
@@ -93,13 +110,14 @@ var displayView = {
   }
 }
 
-var catListView = {
-  init: function(){
-    this.$catList = $('.cat-list');
+const catListView = {
+  init(){
+    this.catList  =  $('.cat-list')
     catListView.render()
+    $('.cat-item').eq(0).click()
   },
 
-  render: function(){
+  render(){
     this.catItems = ' '
     octopus.getCats().forEach(function(cat) {
       this.catItems += `<li class="cat-item"><img class="cats" src="${cat.picture}" />
@@ -107,20 +125,71 @@ var catListView = {
         <p class="cat-id">${cat.id}</p>
       </li>`
     }, this);
-    this.$catList.html(this.catItems);
+    this.catList.html(this.catItems);
     catListView.clickHandler()
   },
   
-  clickHandler: function(){
-    var catItem = $(".cat-item")
-
-    catItem.on('click', function () {
+  clickHandler(){
+      var catItem = $('.cat-item')
+      catItem.on('click', function () {
       var $this = $(this)
       catItem.removeClass("selected")
       $this.addClass("selected")
       octopus.updateDisplay($this.find('.cat-id').text())
     })
   },
+}
+
+const adminView = {
+  init(){
+    this.adminForm   = $('.admin-form')
+    this.catName     = $('#form-cat-name')
+    this.catUrl      = $('#form-cat-url')
+    this.catClicks   = $('#form-cat-clicks')
+    var btnAdmin     = $('.btn-admin')
+    var btnSave      = $('.btn-save')
+    var btnCancel    = $('.btn-cancel')
+   
+   btnAdmin.on('click',function(){
+    adminView.showAdmin()
+   });
+
+   btnCancel.on('click',function(){
+     adminView.hideAdmin()
+   })
+
+   btnSave.on('click',function(){
+     adminView.saveData()
+   })
+  },
+
+  setInformation(cat){
+    this.id = cat.id
+    this.catName.val(cat.name)
+    this.catUrl.val(cat.picture)
+    this.catClicks.val(cat.clickCount)
+  },
+
+  showAdmin(){
+    this.adminForm.addClass('visible')
+  },
+
+  hideAdmin(){
+    this.adminForm.removeClass('visible')
+  },
+
+  saveData(){
+    octopus.updateData({
+      id: this.id,
+      name: this.catName.val(),
+      picture: this.catUrl.val(),
+      clickCount: Number(this.catClicks.val())
+    })
+
+    adminView.hideAdmin()
+
+  }
+
 }
 
 octopus.init();
