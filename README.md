@@ -34,7 +34,7 @@ I ended with that:
 
 ![my cat clicker](./assets/img/cat-clicker.png)
 
-[https://codepen.io/freesgen/pen/GEXGBK]('https://codepen.io/freesgen/pen/GEXGBK')
+[https://codepen.io/freesgen/pen/GEXGBK](https://codepen.io/freesgen/pen/GEXGBK)
 
 so lets see the most important the code
 
