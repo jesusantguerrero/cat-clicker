@@ -33,7 +33,8 @@ The specifics of the layout do not matter, so style it however you'd like.
 I ended with that:
 
 ![my cat clicker](./assets/img/cat-clicker.png)
-[run it]('https://codepen.io/freesgen/pen/GEXGBK')
+
+[https://codepen.io/freesgen/pen/GEXGBK]('https://codepen.io/freesgen/pen/GEXGBK')
 
 so lets see the most important the code
 
