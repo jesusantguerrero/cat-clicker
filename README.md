@@ -1,7 +1,7 @@
 # cat-clicker
 > Design Patterns Practice
 
-app to improve the javascript design pattern as asignment of the Udacity Design Patterns Course
+App to improve javascript design patterns as an asignment from Udacity's Design Patterns Course
 
 Here I am using the Model View Octopus as a way of organization pattern (octopus represents the concept of a controller in the Model  View Controller)
 it was made without any framework just javascript and jquery
